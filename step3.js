@@ -17,7 +17,7 @@ app.get('/webhook', (req, res) => {
     } else {
       res.status(403).end();
     }
-  });
+});
 
 app.listen(PORT, () => {
   console.log('Our BotApp is running on port %d in %s mode', server.address().port, app.settings.env);
