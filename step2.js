@@ -11,6 +11,6 @@ app.get("/",(req,res)=>{
 	res.status(200).send("Hello. Donald Trump Speaking. How Can You Serve Me?")
 });
 
-app.listen(PORT, () => {
+const server = app.listen(PORT, () => {
   console.log('Our BotApp is running on port %d in %s mode', server.address().port, app.settings.env);
 });
