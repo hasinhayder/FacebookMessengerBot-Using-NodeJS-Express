@@ -4,6 +4,7 @@ const express = require('express');
 const bodyParser = require('body-parser');
 const request = require('request');
 const apiaiApp = require('apiai')("dialogflow_client_token");
+const PORT = process.env.PORT || 5000;
 
 const app = express();
 app.use(bodyParser.json());
@@ -11,7 +12,7 @@ app.use(bodyParser.urlencoded({ extended: true }));
 
 
 app.get("/",(req,res)=>{
-	res.status(200).send("Hello. I am your assistant Donald Trump. How can I serve you?")
+	res.status(200).send("Hello. Donald Trump Speaking. How Can You Serve Me?");
 });
 
 app.get('/webhook', (req, res) => {
@@ -42,7 +43,7 @@ app.post('/webhook', (req, res) => {
 
   request({
     url: 'https://graph.facebook.com/v3.0/me/messages',
-    qs: {access_token: "EAAD1PeXZBkLcBALeB3ilLVNuICDmcXvIUfv5L52V7ekNAZBz3bsZCZCfpWhsWRLL3LuHXiZAd8S7R5neRlLqM4s0qOxeYVFgiiQ8WHytWaPwwMg0IV64tU2fyZBoKbrWX9Mw37X9NZCdClC0FQyl1oJgjhRhGd3pOlFU9N64aQEJwZDZD"},
+    qs: {access_token: "PAGE_ACCESS_TOKEN"},
     method: 'POST',
     json: {
       recipient: {id: sender},
@@ -94,7 +95,7 @@ function sendMessage(event) {
 
 
 
-const server = app.listen(process.env.PORT || 5000, () => {
+const server = app.listen(PORT, () => {
   console.log('Express server listening on port %d in %s mode', server.address().port, app.settings.env);
 });
 
