@@ -3,7 +3,7 @@
 const express = require('express');
 const bodyParser = require('body-parser');
 const request = require('request');
-const apiaiApp = require('apiai')("d626859e22044ffeb13dd74d098be462");
+const apiaiApp = require('apiai')("dialogflow_client_token");
 
 const app = express();
 app.use(bodyParser.json());
@@ -70,7 +70,7 @@ function sendMessage(event) {
 
     request({
       url: 'https://graph.facebook.com/v2.6/me/messages',
-      qs: {access_token: "EAAD1PeXZBkLcBALeB3ilLVNuICDmcXvIUfv5L52V7ekNAZBz3bsZCZCfpWhsWRLL3LuHXiZAd8S7R5neRlLqM4s0qOxeYVFgiiQ8WHytWaPwwMg0IV64tU2fyZBoKbrWX9Mw37X9NZCdClC0FQyl1oJgjhRhGd3pOlFU9N64aQEJwZDZD"},
+      qs: {access_token: "PAGE_ACCESS_TOKEN"},
       method: 'POST',
       json: {
         recipient: {id: sender},
